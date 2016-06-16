@@ -1,4 +1,4 @@
 # Open
 Open theme for ContentBox
 
-![open theme preview](https://github.com/contentbox-themes/open/blob/master/screenshot.png)
+<img src="https://raw.githubusercontent.com/contentbox-themes/open/master/screenshot.png" class="img-responsive">
