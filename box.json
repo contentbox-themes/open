@@ -1,8 +1,8 @@
 {
     "name":"ContentBox Theme - Open",
-    "version":"1.0.0",
+    "version":"@build.version@+@build.number@",
     "slug":"cbtheme-open",
-    "location" : "https://github.com/contentbox-themes/open/archive/master.zip",
+    "location"  : "http://downloads.ortussolutions.com/ortussolutions/contentbox-themes/open/@build.version@/open-@build.version@.zip",
     "author":"Ortus Solutions",
     "homepage":"http://www.ortussolutions.com/products/contentbox",
     "documentation":"https://github.com/contentbox-themes/open",
@@ -16,7 +16,6 @@
     "instructions":"",
     "changelog":"",
     "type":"contentbox-themes",
-    "projectURL":"",
     "license":[
         {
             "type":"Apache2",
@@ -37,6 +36,7 @@
     },
     "ignore":[
         "**/.*",
+        "build.xml",
         "tests"
     ]
 }
