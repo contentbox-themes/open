@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/contentbox-themes/open.svg?branch=development)](https://travis-ci.org/contentbox-themes/open)
+
 # Open
 Open theme for ContentBox
 
