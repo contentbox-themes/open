@@ -86,15 +86,15 @@ component{
 			{ name="cbBootswatchTheme", 	group="Colors", defaultValue="white", 	type="select", 	label="ContentBox Color Palette:", 	required="false", optionsUDF="getSwatches", groupIntro="Control the color scheme of your entire site by changing the color palette.", fieldHelp="#loadHelpFile( 'cbBootswatchTheme.html' )#"  },
 			
 			{ name="headerLogo", 			group="Header", defaultValue="", 		type="text", 	label="Logo URL:", groupIntro="Customize the header section of your theme.", 	fieldDescription="Enter a relative or full url for the website logo. Recommended dimensions: 300x50."  },
-			{ name="headerMainNav", 		group="Header", defaultValue="none", 	type="select", 	label="Main Navigation:", options="none,#menus()#", fieldDescription="Select a menu for the Main Navigation."},
+			{ name="headerMainNav", 		group="Header", defaultValue="none", 	type="select", 	label="Main Navigation:", optionsUDF="menus", fieldDescription="Select a menu for the Main Navigation."},
 		
-			{ name="sliderCategory", 		group="Slideshow", 	defaultValue="none", 		type="select", 	label="Content Category:", options="none,#entryCategories()#", groupIntro="Customize the slider that appears in the homepage.", fieldDescription="Select the content store category.", fieldHelp="#loadHelpFile( 'contentStoreSlider.html' )#" },
+			{ name="sliderCategory", 		group="Slideshow", 	defaultValue="none", 		type="select", 	label="Content Category:", optionsUDF="entryCategories", groupIntro="Customize the slider that appears in the homepage.", fieldDescription="Select the content store category.", fieldHelp="#loadHelpFile( 'contentStoreSlider.html' )#" },
 			
-			{ name="singleEntryCategory",   group="Single Blog Entry", defaultValue="none", 	type="select", 	label="Blog Entry Category:", options="none,#entryCategories()#", groupIntro="Add the most recent blog entry from a selected category." },
+			{ name="singleEntryCategory",   group="Single Blog Entry", defaultValue="none", 	type="select", 	label="Blog Entry Category:", optionsUDF="entryCategories", groupIntro="Add the most recent blog entry from a selected category." },
 			{ name="singleEntryLinkText", 	group="Single Blog Entry", defaultValue="", 		type="text", 	label="Blog Entry Link Text:" },
 			{ name="singleEntryLinkURL", 	group="Single Blog Entry", defaultValue="", 		type="text", 	label="Blog Entry Link URL:" },
 			
-			{ name="entriesCategory",   	group="Blog Entries", defaultValue="none", 	type="select", 	label="Blog Entries Category:", options="none,#entryCategories()#", groupIntro="Add blog entries from a selected category." },
+			{ name="entriesCategory",   	group="Blog Entries", defaultValue="none", 	type="select", 	label="Blog Entries Category:", optionsUDF="entryCategories", groupIntro="Add blog entries from a selected category." },
 			{ name="entriesLinkText", 		group="Blog Entries", defaultValue="", 		type="text", 	label="Blog Entries Link Text:" },
 			{ name="entriesLinkURL", 		group="Blog Entries", defaultValue="", 		type="text", 	label="Blog Entries Link URL:" },
 			
@@ -175,13 +175,21 @@ component{
 		
 	}
 	
-	private string function entryCategories() {
+	/**
+	* Gets names of categories
+	*/
+	string function entryCategories() {
 		var categoryList = arraytoList( categoryService.getAllNames() );
+		categoryList = ListPrepend( categoryList, "none" );
 		return categoryList;
 	}
 	
-	private string function menus() { 
+	/**
+	* Gets all menu slugs
+	*/
+	string function menus() { 
 		var menuList = arraytoList( menuService.getAllSlugs() );
+		menuList = ListPrepend( menuList, "none" );
 		return menuList;
 	}
 }
